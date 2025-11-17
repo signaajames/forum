@@ -1,24 +1,45 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+document.querySelector('#app').innerHTML = /*html*/`
+  <div class="page">
+    <div class="answer-box">
+      <input
+        class="answer-input"
+        type="text"
+        placeholder=""
+      />
+      <div class="answer-hint">
+        Press <span class="key">↵ Enter</span> to submit the <span class="key">code</span>
+      </div>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
   </div>
 `
 
-setupCounter(document.querySelector('#counter'))
+let codesplaceholder = [
+  "minecraft",
+  "signaajames",
+  "super_duper_signa",
+  "i misspelt some things",
+  "Enter codes here!",
+  "Code put here"
+]
+
+const codes = [
+  ""
+]
+
+const answerinput = document.getElementsByClassName('answer-input')[0]
+
+async function changePlaceholderText() {
+  try {
+    for (let i = 0; i < codesplaceholder.length; i++) {
+      let randIndex = Math.floor(Math.random() * codesplaceholder.length)
+      answerinput.placeholder = codesplaceholder[randIndex]
+      console.log(i)
+    }
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+changePlaceholderText()
