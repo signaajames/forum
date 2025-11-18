@@ -1,6 +1,6 @@
 import './style.css'
 
-document.querySelector('#app').innerHTML = /*html*/`
+document.querySelector('#orange').innerHTML = /*html*/`
   <div class="page">
     <div class="answer-box">
       <input
