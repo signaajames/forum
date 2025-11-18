@@ -20,8 +20,11 @@ body {
 
 .answer-box {
   max-width: 900px;
+  min-width: 560px;
   width: 100%;
   padding: 16px 4px;
+  position: relative;
+  min-height: 260px;
 }
 
 /* bigger input with transitions */
@@ -52,6 +55,40 @@ body {
   background-color: #050505;         /* tiny dark highlight on focus */
 }
 
+.answer-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #aaaaaa;
+}
+
+.answer-hint .key {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.answer-hint-error {
+  color: #ff4d4f;
+}
+
+.answer-input.answer-input-error {
+  border-bottom-color: #ff4d4f;
+  box-shadow: 0 1px 0 0 #ff4d4f;
+}
+
+.answer-input-error {
+  border-bottom-color: #ff4d4f;
+  color: #ff4d4f;
+  animation: answer-shake 0.25s ease;
+}
+
+@keyframes answer-shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
 .req {
   color:rgb(255, 102, 102)
 
@@ -86,20 +123,40 @@ h3 {
   border: #262626 1px solid;
   border-radius: 15px;
   padding-inline: 10px;
-  margin-right: 10px;
+  margin-right: 0;
 }
 
-.answer-box section + section {
-  margin-top: 40px;
+.step {
+  position: absolute;
+  inset: 16px 4px 16px 4px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.step.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.step-nav {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
 }
 
 .sumbit {
-  margin-top: 40px;
+  margin-top: 0;
   padding: 12px 26px;
   border-radius: 10px;
-  border: 1px solid #555555;
-  background: #141414;
-  color: #ffffff;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  color: #000000;
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
@@ -111,11 +168,41 @@ h3 {
 }
 
 .sumbit:hover {
-  background-color: #1a1a1a;
-  border-color: #888888;
+  background-color: #f0f0f0;
+  border-color: #ffffff;
 }
 
 .sumbit:active {
+  background-color: #e5e5e5;
+  border-color: #d0d0d0;
+}
+
+.back-btn {
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid #444444;
+  background: transparent;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.back-btn:hover {
+  background-color: #141414;
+  border-color: #777777;
+}
+
+.back-btn:active {
   background-color: #101010;
-  border-color: #666666;
+  border-color: #555555;
+}
+
+.step-nav .next-btn,
+.step-nav .submit-btn {
+  margin-left: auto;
 }
