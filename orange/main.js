@@ -68,7 +68,7 @@ document.querySelector('#orange').innerHTML = /*html*/`
         <section id="age" class="step">
           <div class="textarea">
             <h3><span class="req">*</span> How old are you?</h3>
-            <p class="desc">You must be between 11 and 16 so everyone is around a similar age.</p>
+            <p class="desc">You must be between 12 and 16 so everyone is around a similar age.</p>
           </div>
           <input
             class="answer-input"
@@ -254,8 +254,8 @@ steps.forEach((step, index) => {
           ageField.focus()
           return
         }
-        if (ageNumber < 11 || ageNumber > 16) {
-          setStepError(step, 'Age must be between 11 and 16.', ageField)
+        if (ageNumber < 12 || ageNumber > 16) {
+          setStepError(step, 'Age must be between 2 and 16.', ageField)
           ageField.focus()
           return
         }
