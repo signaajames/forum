@@ -1,6 +1,4 @@
-import './style.css'
-
-document.querySelector('#app').innerHTML = /*html*/`
+import"./modulepreload-polyfill-B5Qt9EMX.js";document.querySelector("#orange").innerHTML=`
   <div class="page">
     <div class="answer-box">
       <input
@@ -13,4 +11,4 @@ document.querySelector('#app').innerHTML = /*html*/`
       </div>
     </div>
   </div>
-`
+`;
