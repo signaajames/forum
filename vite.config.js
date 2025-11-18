@@ -1,8 +1,15 @@
-import { defineConfig } from 'vite';
+// vite.config.js
+import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
-// https://vite.dev/config/
 export default defineConfig({
-  // This repo will be served at: https://signaajames.github.io/forum
-  // So we set the base path to `/forum/`
   base: '/forum/',
-});
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        orange: resolve(__dirname, 'orange/index.html'),
+      },
+    },
+  },
+})
