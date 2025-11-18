@@ -32,14 +32,10 @@ body {
   background: transparent;
   color: #ffffff;
   outline: none;
-  .answer-input {
   transition:
-    border-bottom-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background-color 0.25s ease,
-    color 0.25s ease;
-}
-
+    border-bottom-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .answer-input::placeholder {
@@ -52,10 +48,6 @@ body {
   background-color: #050505;         /* tiny dark highlight on focus */
 }
 
-.answer-input.answer-input-error {
-  border-bottom-color: #ff4d4f;
-  box-shadow: 0 1px 0 0 #ff4d4f;
-}
 
 /* Hint under input */
 .answer-hint {
@@ -67,23 +59,4 @@ body {
 .answer-hint .key {
   font-weight: 600;
   color: #ffffff;
-}
-
-.answer-input-error {
-  border-bottom-color: #ff4d4f;
-  color: #ff4d4f;
-  animation: answer-shake 0.25s ease;
-}
-
-@keyframes answer-shake {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-4px); }
-  40% { transform: translateX(4px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(3px); }
-  100% { transform: translateX(0); }
-}
-
-.answer-hint-error {
-  color: #ff4d4f;
 }
