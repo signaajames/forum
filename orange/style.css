@@ -14,16 +14,14 @@ body {
 }
 
 .page {
-  /* just centering, no card */
+  width: 100%;
+  padding: 40px 16px;
 }
 
 .answer-box {
-  max-width: 840px;
-  min-width: 560px;
-}
-
-.answer-box {
-  max-width: 900px;                  /* wider */
+  max-width: 900px;
+  width: 100%;
+  padding: 16px 4px;
 }
 
 /* bigger input with transitions */
@@ -62,16 +60,20 @@ body {
 .textarea {
   display: flex;
   flex-direction: column;
-  line-height: 3px;
-  margin-top: 80px;
+  gap: 4px;
+  margin-bottom: 10px;
 }
 
 .desc {
-  color: #aaa
+  color: #aaaaaa;
+  font-size: 14px;
+  margin: 0;
 }
 
 h3 {
   font-weight: 600;
+  margin: 0;
+  font-size: 18px;
 }
 
 .answer-textarea {
@@ -85,4 +87,35 @@ h3 {
   border-radius: 15px;
   padding-inline: 10px;
   margin-right: 10px;
+}
+
+.answer-box section + section {
+  margin-top: 40px;
+}
+
+.sumbit {
+  margin-top: 40px;
+  padding: 12px 26px;
+  border-radius: 10px;
+  border: 1px solid #555555;
+  background: #141414;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.sumbit:hover {
+  background-color: #1a1a1a;
+  border-color: #888888;
+}
+
+.sumbit:active {
+  background-color: #101010;
+  border-color: #666666;
 }

@@ -7,7 +7,7 @@ document.querySelector('#orange').innerHTML = /*html*/`
         <section id='name'>
           <div class='textarea'>
             <h3><span class='req'>*</span> What's your Discord username?</h3>
-            <p class='desc'>Type your Discord username below</p>
+            <p class='desc'>Let us know how to contact you on Discord.</p>
           </div>
           <input
             class="answer-input"
@@ -19,7 +19,7 @@ document.querySelector('#orange').innerHTML = /*html*/`
         <section id='javaName'>
           <div class='textarea'>
             <h3><span class='req'>*</span> What's your Java Minecraft username?</h3>
-            <p class='desc'>The server is not bedrock</p>
+            <p class='desc'>Your in-game name on Java edition (not Bedrock).</p>
           </div>
           <input
             class="answer-input"
@@ -32,7 +32,7 @@ document.querySelector('#orange').innerHTML = /*html*/`
         <section id='timespent'>
           <div class='textarea'>
             <h3>How long have you been playing minecraft?</h3>
-            <p class='desc'>Optional, it mostly shows how well you know the game</p>
+            <p class='desc'>Optional. This just helps us understand your experience with the game.</p>
           </div>
           <input
             class="answer-input"
@@ -44,7 +44,7 @@ document.querySelector('#orange').innerHTML = /*html*/`
         <section id='age'>
           <div class='textarea'>
             <h3><span class='req'>*</span> How old are you?</h3>
-            <p class='desc'>Minimum is 11 and max is 16.<br><br><br><br><br><br><br>It's nice to have people around the same age</p>
+            <p class='desc'>You must be between 11 and 16 so everyone is around a similar age.</p>
           </div>
           <input
             class="answer-input"
@@ -57,7 +57,7 @@ document.querySelector('#orange').innerHTML = /*html*/`
         <section id='timeZone'>
           <div class='textarea'>
             <h3><span class='req'>*</span> What's your timezone?</h3>
-            <p class='desc'>Do i really need to explain?</p>
+            <p class='desc'>This helps us know when you’re usually online.</p>
           </div>
           <input
             class="answer-input"
@@ -70,14 +70,14 @@ document.querySelector('#orange').innerHTML = /*html*/`
         <section id='knwoyou'>
           <div class='textarea'>
             <h3><span class='req'>*</span> Getting to know you</h3>
-            <p class='desc'>Enter a link to a video about yourself.<br><br><br><br><br><br><br>Or tell us about yourself</p>
+            <p class='desc'>Share a short video link or write a few sentences about yourself.</p>
           </div>
 
           <textarea
             class="answer-input answer-textarea"
-            placeholder="youtube.com/watch?v=....."
+            placeholder="Paste a link or introduce yourself here..."
             required
-          ></textarea>
+            ></textarea>
         </section>
         
         <input
