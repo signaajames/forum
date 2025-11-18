@@ -58,7 +58,10 @@ function handleSubmit(event) {
     answerinput.classList.remove('answer-input-error')
     answerHint.classList.remove('answer-hint-error')
     answerHint.innerHTML = defaultHintHtml
-    window.location.href = value
+    
+    // use Vite's base URL
+    const target = `${import.meta.env.BASE_URL}${value}/`
+    window.location.href = target
   } else {
     answerHint.textContent = 'Wrong code. Ask for the correct code and try again.'
     answerHint.classList.add('answer-hint-error')
