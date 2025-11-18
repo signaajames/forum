@@ -1,5 +1,8 @@
 import './style.css'
 
+// Direct Discord webhook submit (no backend)
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1440185420205002822/KftqU5u05haDfE_GDIKdZ1Id_UnlRt15NeSgm_yZOiMP61-0SkfLmYgUOz5VT_qJUTk8'
+
 document.querySelector('#orange').innerHTML = /*html*/`
   <div class="page">
     <div class="answer-box">
@@ -122,19 +125,54 @@ document.querySelector('#orange').innerHTML = /*html*/`
         </section>
       </form>
     </div>
+
+    <div class="submit-overlay" id="submit-overlay">
+      <div class="submit-overlay-inner">
+        <span class="submit-overlay-text">Submitting</span>
+      </div>
+    </div>
   </div>
 `
-
+  
 const form = document.querySelector('.orange-form')
+const overlay = document.getElementById('submit-overlay')
+const overlayText = overlay?.querySelector('.submit-overlay-text')
+
 const steps = Array.from(form.querySelectorAll('.step'))
 
 let currentStepIndex = 0
+let isSubmitting = false
+let overlayDotsInterval = null
 
 function showStep(index) {
   steps.forEach((step, i) => {
     step.classList.toggle('active', i === index)
   })
   currentStepIndex = index
+}
+
+function showSubmittingOverlay() {
+  if (!overlay) return
+  overlay.classList.add('active')
+  if (!overlayText) return
+
+  let dotCount = 0
+  overlayText.textContent = 'Submitting'
+
+  overlayDotsInterval = setInterval(() => {
+    dotCount = (dotCount + 1) % 4
+    const dots = '.'.repeat(dotCount)
+    overlayText.textContent = `Submitting${dots}`
+  }, 400)
+}
+
+function hideSubmittingOverlay() {
+  if (!overlay) return
+  overlay.classList.remove('active')
+  if (overlayDotsInterval) {
+    clearInterval(overlayDotsInterval)
+    overlayDotsInterval = null
+  }
 }
 
 function setStepError(step, message, field) {
@@ -254,6 +292,11 @@ steps.forEach((step, index) => {
 })
 
 form.addEventListener('submit', async (event) => {
+  if (isSubmitting) {
+    event.preventDefault()
+    return
+  }
+
   if (!form.checkValidity()) {
     event.preventDefault()
     const firstInvalid = form.querySelector(':invalid')
@@ -270,6 +313,8 @@ form.addEventListener('submit', async (event) => {
   }
 
   event.preventDefault()
+  isSubmitting = true
+  showSubmittingOverlay()
 
   const data = {
     discord: form.discord.value.trim(),
@@ -281,23 +326,33 @@ form.addEventListener('submit', async (event) => {
   }
 
   try {
-    const res = await fetch('/api/submit', {
+    const content = [
+      '**New application**',
+      `Discord: ${data.discord}`,
+      `MC Java: ${data.javaName}`,
+      `Age: ${data.age}`,
+      `Timezone: ${data.timeZone}`,
+      `Playing for: ${data.timeSpent || 'N/A'}`,
+      `About: ${data.about || 'N/A'}`
+    ].join('\n')
+
+    const formData = new FormData()
+    formData.append('content', content)
+
+    await fetch(WEBHOOK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      mode: 'no-cors',
+      body: formData
     })
 
-    if (!res.ok) {
-      throw new Error('Failed to submit')
-    }
-
-    // simple success state: reset form & go back to first step
-    form.reset()
-    showStep(0)
+    // on success, send back to main forum page
+    window.location.href = import.meta.env.BASE_URL
   } catch (err) {
     console.error(err)
     const lastStep = steps[steps.length - 1]
     setStepError(lastStep, 'Something went wrong sending your application. Try again in a minute.')
+    hideSubmittingOverlay()
+    isSubmitting = false
   }
 })
 

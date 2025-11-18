@@ -206,3 +206,29 @@ h3 {
 .step-nav .submit-btn {
   margin-left: auto;
 }
+
+.submit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.submit-overlay.active {
+  display: flex;
+}
+
+.submit-overlay-inner {
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: #111111;
+  border: 1px solid #333333;
+  font-size: 16px;
+}
+
+.submit-overlay-text {
+  font-weight: 600;
+}

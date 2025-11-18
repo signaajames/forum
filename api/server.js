@@ -4,8 +4,11 @@ import express from 'express';
 const app = express();
 app.use(express.json());
 
-// NOTE: This is fine for local dev, but don't commit this URL to a public repo.
-const WEBHOOK_URL = 'https://discord.com/api/webhooks/1440185420205002822/KftqU5u05haDfE_GDIKdZ1Id_UnlRt15NeSgm_yZOiMP61-0SkfLmYgUOz5VT_qJUTk8';
+// Prefer env var in production. Supports either DISCORD_WEBHOOK_URL or dog_var.
+const WEBHOOK_URL =
+  process.env.DISCORD_WEBHOOK_URL ||
+  process.env.dog_var ||
+  'https://discord.com/api/webhooks/1440185420205002822/KftqU5u05haDfE_GDIKdZ1Id_UnlRt15NeSgm_yZOiMP61-0SkfLmYgUOz5VT_qJUTk8';
 
 app.post('/api/submit', async (req, res) => {
   if (!WEBHOOK_URL) {
