@@ -4,7 +4,7 @@ import"./modulepreload-polyfill-B5Qt9EMX.js";document.querySelector("#orange").i
       <input
         class="answer-input"
         type="text"
-        placeholder=""
+        placeholder="Abc"
       />
       <div class="answer-hint">
         Press <span class="key">↵ Enter</span> to submit the <span class="key">code</span>
